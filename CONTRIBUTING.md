@@ -1,38 +1,38 @@
-# Contributing to SpeakerAwake
+# Contributing to KeepSpeakerOn
 
 Thanks for helping! Bug reports, device test results and pull requests are all welcome.
 
 ## Building
 
-There's no Visual Studio, NuGet or SDK to install. SpeakerAwake builds with the C# compiler
+There's no Visual Studio, NuGet or SDK to install. KeepSpeakerOn builds with the C# compiler
 that ships with the .NET Framework on every Windows 10/11 PC.
 
 ```
-git clone https://github.com/mdsajedul/SpeakerAwake.git
-cd SpeakerAwake
+git clone https://github.com/mdsajedul/KeepSpeakerOn.git
+cd KeepSpeakerOn
 build.cmd
 ```
 
-The output is `bin\SpeakerAwake.exe`. The build uses `/warnaserror+`, so it must compile with no warnings.
+The output is `bin\KeepSpeakerOn.exe`. The build uses `/warnaserror+`, so it must compile with no warnings.
 
 ## Project layout
 
 ```
-src/SpeakerAwake.cs     All source code (single file)
+src/KeepSpeakerOn.cs     All source code (single file)
 assets/                 App icon (.ico) and a 256 px PNG preview
 tools/make-icon.ps1     Regenerates the app icon
 build.cmd               Build script
 docs/                   User guide, requirements, supported devices
 ```
 
-### Code structure (`src/SpeakerAwake.cs`)
+### Code structure (`src/KeepSpeakerOn.cs`)
 
 | Section | Responsibility |
 |---|---|
 | COM interop | `IMMDeviceEnumerator`, `IMMDevice`, `IAudioClient`, `IAudioRenderClient`, `IMMNotificationClient`, `IPropertyStore` declarations |
 | `SignalPreset` | Preset table, and rendering of the 1-second float32 loop |
 | `KeepAliveEngine` | Streaming state machine on a dedicated MTA thread: open default device → play → tear down on any signal → retry |
-| `Settings` / `Startup` | Registry persistence (`HKCU\Software\SpeakerAwake`, the `Run` key) |
+| `Settings` / `Startup` | Registry persistence (`HKCU\Software\KeepSpeakerOn`, the `Run` key) |
 | `TrayApp` | Tray icon, menu and power events (UI thread) |
 | `Program` | Command-line flags and the single-instance mutex |
 
@@ -64,7 +64,7 @@ docs/                   User guide, requirements, supported devices
 - RAM: 25 MB private bytes or less. Avoid allocations in the streaming loop.
 - Measure before submitting changes to the engine:
   ```powershell
-  $p = Start-Process .\bin\SpeakerAwake.exe -PassThru; Start-Sleep 8; $p.Refresh()
+  $p = Start-Process .\bin\KeepSpeakerOn.exe -PassThru; Start-Sleep 8; $p.Refresh()
   $t = $p.TotalProcessorTime; Start-Sleep 20; $p.Refresh()
   "CPU %: " + (($p.TotalProcessorTime - $t).TotalSeconds / 20 / [Environment]::ProcessorCount * 100)
   "Private MB: " + ($p.PrivateMemorySize64 / 1MB)
@@ -88,7 +88,7 @@ docs/                   User guide, requirements, supported devices
   the user started (for example the startup toggle) may show a message box.
 - It must never make an audible sound. Any new preset must stay at −60 dBFS or below for
   broadband signals, or below 20 Hz for tones.
-- Settings live only under `HKCU\Software\SpeakerAwake`. No admin rights and no files.
+- Settings live only under `HKCU\Software\KeepSpeakerOn`. No admin rights and no files.
 
 ## Manual test checklist
 
@@ -113,14 +113,14 @@ Before opening a PR that touches the engine or the tray UI:
 
 ## Releasing (maintainers)
 
-1. Bump `AssemblyVersion` and `AssemblyFileVersion` in `src/SpeakerAwake.cs` and update `CHANGELOG.md`.
+1. Bump `AssemblyVersion` and `AssemblyFileVersion` in `src/KeepSpeakerOn.cs` and update `CHANGELOG.md`.
 2. Run `build.cmd`.
 3. Tag the release (`git tag v1.x.y && git push --tags`), then create a GitHub Release for the
-   tag and attach `bin\SpeakerAwake.exe`.
+   tag and attach `bin\KeepSpeakerOn.exe`.
 
 ### Icon
 
-The app icon (`assets/SpeakerAwake.ico`) is generated from the same shape as the tray icon.
+The app icon (`assets/KeepSpeakerOn.ico`) is generated from the same shape as the tray icon.
 If you change `TrayApp.MakeIcon`, update `tools/make-icon.ps1` to match, then regenerate it:
 
 ```

@@ -1,11 +1,11 @@
 # Supported Devices
 
-SpeakerAwake works with **any audio output that Windows lists under Settings → System →
+KeepSpeakerOn works with **any audio output that Windows lists under Settings → System →
 Sound → Output**. It uses the standard Windows audio API (WASAPI), so no vendor
 drivers or pairing are needed.
 
 The real question is whether a particular speaker's auto-standby is triggered by
-*silence*, because that is the only kind SpeakerAwake can prevent.
+*silence*, because that is the only kind KeepSpeakerOn can prevent.
 
 ## Device types
 
@@ -34,10 +34,10 @@ the connection type, and the lowest preset that kept it awake.
 - **Fixed-timer speakers.** Some speakers turn off after a set time no matter what is
   playing, or only respond to their own button. Nothing on the PC side can prevent this.
 - **Hands-Free / Headset profile.** If Windows uses a Bluetooth speaker's *Hands-Free* endpoint
-  (for example during a call), audio quality drops. SpeakerAwake simply follows whichever
+  (for example during a call), audio quality drops. KeepSpeakerOn simply follows whichever
   device is the default.
 - **Muted or zero volume.** Windows sends true silence and the speaker will sleep.
-- **Exclusive-mode apps.** While an app has exclusive use of the device, SpeakerAwake waits
+- **Exclusive-mode apps.** While an app has exclusive use of the device, KeepSpeakerOn waits
   (orange icon) and resumes when the device is released.
 - **Very low frequencies.** Some Bluetooth codecs and small drivers remove 10–15 Hz,
   so the sine presets may not register. Prefer the noise presets.

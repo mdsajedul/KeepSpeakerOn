@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2026-10-29
+
+- **Renamed from SpeakerAwake to KeepSpeakerOn**, to avoid confusion with an unrelated, older project of the same name.
+  The exe is now `KeepSpeakerOn.exe` and the website is https://mdsajedul.github.io/KeepSpeakerOn/
+- Upgrading: run the new exe and exit the old one. Your signal choice and "Start with Windows" carry over automatically,
+  and the old startup entry is removed. You can then delete `SpeakerAwake.exe`.
+
 ## [1.0.1] - 2026-10-29
 
 - The exe now has an app icon (the green speaker from the tray), visible in Explorer, the taskbar and Task Manager

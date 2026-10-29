@@ -1,4 +1,4 @@
-// SpeakerAwake - keeps external speakers out of auto-standby.
+// KeepSpeakerOn - keeps external speakers out of auto-standby.
 // Copyright (c) 2026 mdsajedul. Licensed under the MIT License (see LICENSE).
 //
 // Plays an inaudible signal on the default multimedia output device (WASAPI shared mode)
@@ -15,14 +15,14 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-[assembly: System.Reflection.AssemblyTitle("SpeakerAwake")]
-[assembly: System.Reflection.AssemblyProduct("SpeakerAwake")]
+[assembly: System.Reflection.AssemblyTitle("KeepSpeakerOn")]
+[assembly: System.Reflection.AssemblyProduct("KeepSpeakerOn")]
 [assembly: System.Reflection.AssemblyDescription("Keeps external speakers out of auto-standby")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (c) 2026 mdsajedul, MIT License")]
-[assembly: System.Reflection.AssemblyVersion("1.0.1.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.1.0")]
+[assembly: System.Reflection.AssemblyVersion("1.1.0.0")]
+[assembly: System.Reflection.AssemblyFileVersion("1.1.0.0")]
 
-namespace SpeakerAwake
+namespace KeepSpeakerOn
 {
     // ------------------------------------------------------------------
     // Core Audio (MMDevice / WASAPI) COM interop
@@ -261,7 +261,7 @@ namespace SpeakerAwake
         public void Start()
         {
             thread = new Thread(Run);
-            thread.Name = "SpeakerAwake.Stream";
+            thread.Name = "KeepSpeakerOn.Stream";
             thread.IsBackground = true;
             thread.SetApartmentState(ApartmentState.MTA);
             thread.Start();
@@ -484,7 +484,7 @@ namespace SpeakerAwake
 
     static class Settings
     {
-        const string KeyPath = @"Software\SpeakerAwake";
+        const string KeyPath = @"Software\KeepSpeakerOn";
 
         public static SignalPreset LoadPreset()
         {
@@ -497,12 +497,29 @@ namespace SpeakerAwake
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey(KeyPath))
                 key.SetValue("Signal", preset.Key);
         }
+
+        // Versions before 1.1.0 were called SpeakerAwake. Carry over the signal choice and the
+        // startup entry, then remove the old ones so both apps don't start at sign-in.
+        public static void MigrateFromSpeakerAwake()
+        {
+            const string OldKeyPath = @"Software\SpeakerAwake";
+            using (RegistryKey old = Registry.CurrentUser.OpenSubKey(OldKeyPath))
+            {
+                string signal = old == null ? null : old.GetValue("Signal") as string;
+                if (signal != null)
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(KeyPath))
+                        if (key.GetValue("Signal") == null) key.SetValue("Signal", signal);
+            }
+            Registry.CurrentUser.DeleteSubKeyTree(OldKeyPath, false);
+
+            if (Startup.RemoveLegacyEntry()) Startup.SetEnabled(true);
+        }
     }
 
     static class Startup
     {
         const string RunKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        const string ValueName = "SpeakerAwake";
+        const string ValueName = "KeepSpeakerOn";
 
         static string Command { get { return "\"" + Application.ExecutablePath + "\""; } }
 
@@ -521,6 +538,17 @@ namespace SpeakerAwake
             {
                 if (enabled) key.SetValue(ValueName, Command);
                 else key.DeleteValue(ValueName, false);
+            }
+        }
+
+        // Removes the pre-1.1.0 "SpeakerAwake" startup entry; returns true if there was one.
+        public static bool RemoveLegacyEntry()
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RunKey, true))
+            {
+                if (key == null || key.GetValue("SpeakerAwake") == null) return false;
+                key.DeleteValue("SpeakerAwake", false);
+                return true;
             }
         }
     }
@@ -585,7 +613,7 @@ namespace SpeakerAwake
 
             tray = new NotifyIcon();
             tray.Icon = icons[EngineState.Starting];
-            tray.Text = "SpeakerAwake";
+            tray.Text = "KeepSpeakerOn";
             tray.ContextMenuStrip = menu;
             tray.Visible = true;
 
@@ -612,7 +640,7 @@ namespace SpeakerAwake
             string line = state == EngineState.Playing ? "Playing on " + text : text;
             statusItem.Text = line;
             tray.Icon = icons[state];
-            string tip = "SpeakerAwake\n" + line;
+            string tip = "KeepSpeakerOn\n" + line;
             tray.Text = tip.Length > 63 ? tip.Substring(0, 60) + "..." : tip;
             if (state == EngineState.Playing) trimTimer.Start();
         }
@@ -648,7 +676,7 @@ namespace SpeakerAwake
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not change the startup setting:\n" + ex.Message, "SpeakerAwake",
+                MessageBox.Show("Could not change the startup setting:\n" + ex.Message, "KeepSpeakerOn",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -720,9 +748,11 @@ namespace SpeakerAwake
             }
 
             bool firstInstance;
-            using (Mutex mutex = new Mutex(true, @"Local\SpeakerAwake.SingleInstance", out firstInstance))
+            using (Mutex mutex = new Mutex(true, @"Local\KeepSpeakerOn.SingleInstance", out firstInstance))
             {
                 if (!firstInstance) return 1;
+                try { Settings.MigrateFromSpeakerAwake(); }
+                catch (Exception) { } // best effort; never block startup over old settings
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new TrayApp());

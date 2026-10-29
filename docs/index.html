@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SpeakerAwake: Stop Bluetooth Speakers Turning Off (Windows)</title>
+<title>KeepSpeakerOn: Stop Bluetooth Speakers Turning Off (Windows)</title>
 <meta name="description" content="Free Windows app that stops Bluetooth, USB and HDMI speakers turning off or going into standby, using an inaudible keep-alive signal. Open source.">
-<link rel="canonical" href="https://mdsajedul.github.io/SpeakerAwake/">
+<link rel="canonical" href="https://mdsajedul.github.io/KeepSpeakerOn/">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="icon-256.png">
 <meta name="theme-color" content="#070b14">
@@ -14,14 +14,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="SpeakerAwake">
-<meta property="og:title" content="SpeakerAwake: stop your speaker turning off automatically">
+<meta property="og:site_name" content="KeepSpeakerOn">
+<meta property="og:title" content="KeepSpeakerOn: stop your speaker turning off automatically">
 <meta property="og:description" content="Free, open-source Windows tray app that keeps Bluetooth and powered speakers out of auto-standby with an inaudible signal.">
-<meta property="og:url" content="https://mdsajedul.github.io/SpeakerAwake/">
-<meta property="og:image" content="https://mdsajedul.github.io/SpeakerAwake/social-preview.png">
+<meta property="og:url" content="https://mdsajedul.github.io/KeepSpeakerOn/">
+<meta property="og:image" content="https://mdsajedul.github.io/KeepSpeakerOn/social-preview.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
-<meta property="og:image:alt" content="SpeakerAwake: stop your Bluetooth speaker turning off automatically">
+<meta property="og:image:alt" content="KeepSpeakerOn: stop your Bluetooth speaker turning off automatically">
 <meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
@@ -30,22 +30,22 @@
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "name": "SpeakerAwake",
+      "name": "KeepSpeakerOn",
       "description": "Free Windows tray app that prevents Bluetooth, USB, HDMI and powered speakers from going into auto-standby by playing an inaudible keep-alive signal.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Windows 10, Windows 11",
-      "softwareVersion": "1.0.1",
+      "softwareVersion": "1.1.0",
       "fileSize": "64KB",
-      "downloadUrl": "https://github.com/mdsajedul/SpeakerAwake/releases/latest/download/SpeakerAwake.exe",
-      "url": "https://mdsajedul.github.io/SpeakerAwake/",
-      "image": "https://mdsajedul.github.io/SpeakerAwake/icon-256.png",
-      "screenshot": "https://mdsajedul.github.io/SpeakerAwake/social-preview.png",
+      "downloadUrl": "https://github.com/mdsajedul/KeepSpeakerOn/releases/latest/download/KeepSpeakerOn.exe",
+      "url": "https://mdsajedul.github.io/KeepSpeakerOn/",
+      "image": "https://mdsajedul.github.io/KeepSpeakerOn/icon-256.png",
+      "screenshot": "https://mdsajedul.github.io/KeepSpeakerOn/social-preview.png",
       "license": "https://opensource.org/licenses/MIT",
       "isAccessibleForFree": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "author": { "@type": "Person", "name": "mdsajedul", "url": "https://github.com/mdsajedul" },
-      "codeRepository": "https://github.com/mdsajedul/SpeakerAwake",
-      "sameAs": ["https://github.com/mdsajedul/SpeakerAwake"]
+      "codeRepository": "https://github.com/mdsajedul/KeepSpeakerOn",
+      "sameAs": ["https://github.com/mdsajedul/KeepSpeakerOn"]
     },
     {
       "@type": "FAQPage",
@@ -53,31 +53,31 @@
         {
           "@type": "Question",
           "name": "How do I stop my Bluetooth speaker from turning off automatically on Windows?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most Bluetooth speakers switch off after 5 to 30 minutes without sound. Run SpeakerAwake and leave it in the system tray. It keeps sending a signal too quiet to hear, so the speaker stays on as long as your PC is awake." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Most Bluetooth speakers switch off after 5 to 30 minutes without sound. Run KeepSpeakerOn and leave it in the system tray. It keeps sending a signal too quiet to hear, so the speaker stays on as long as your PC is awake." }
         },
         {
           "@type": "Question",
           "name": "Why does my speaker cut off the first second of sound?",
-          "acceptedAnswer": { "@type": "Answer", "text": "When there is no audio, many speakers and soundbars enter power-saving standby and take a moment to wake up when sound starts, so the start of notifications, videos and songs is clipped. SpeakerAwake keeps the speaker active so nothing is cut off." }
+          "acceptedAnswer": { "@type": "Answer", "text": "When there is no audio, many speakers and soundbars enter power-saving standby and take a moment to wake up when sound starts, so the start of notifications, videos and songs is clipped. KeepSpeakerOn keeps the speaker active so nothing is cut off." }
         },
         {
           "@type": "Question",
-          "name": "Can I hear the signal SpeakerAwake plays?",
+          "name": "Can I hear the signal KeepSpeakerOn plays?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. The default is white noise at -70 dB, far below normal listening levels. You can choose -80 or -90 dB, or a 10 to 15 Hz tone, which is below the range of human hearing." }
         },
         {
           "@type": "Question",
           "name": "Why not just play a silent MP3 on loop?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A silent file is digital silence, which most speakers detect as no signal, so they go to sleep anyway. SpeakerAwake sends a real but inaudible signal, follows device changes, and survives sleep and disconnects." }
+          "acceptedAnswer": { "@type": "Answer", "text": "A silent file is digital silence, which most speakers detect as no signal, so they go to sleep anyway. KeepSpeakerOn sends a real but inaudible signal, follows device changes, and survives sleep and disconnects." }
         },
         {
           "@type": "Question",
-          "name": "Is SpeakerAwake safe? Why does Windows show a SmartScreen warning?",
-          "acceptedAnswer": { "@type": "Answer", "text": "SpeakerAwake is open source under the MIT license, does not connect to the internet and needs no admin rights. Windows SmartScreen warns because the exe is not code-signed yet. Click More info, then Run anyway." }
+          "name": "Is KeepSpeakerOn safe? Why does Windows show a SmartScreen warning?",
+          "acceptedAnswer": { "@type": "Answer", "text": "KeepSpeakerOn is open source under the MIT license, does not connect to the internet and needs no admin rights. Windows SmartScreen warns because the exe is not code-signed yet. Click More info, then Run anyway." }
         },
         {
           "@type": "Question",
-          "name": "Does SpeakerAwake work on Windows 10, Windows 11, macOS or Linux?",
+          "name": "Does KeepSpeakerOn work on Windows 10, Windows 11, macOS or Linux?",
           "acceptedAnswer": { "@type": "Answer", "text": "It works on Windows 10 (64-bit or 32-bit) and Windows 11. macOS and Linux are not supported." }
         }
       ]
@@ -146,7 +146,7 @@
   .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 999px; font-size: 13.5px; font-weight: 500; color: var(--fg); background: rgba(52, 211, 153, .08); border: 1px solid rgba(52, 211, 153, .25); }
   .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(52, 211, 153, .18); }
   h1 { margin: 22px 0 0; font-family: var(--display); font-weight: 800; letter-spacing: -.035em; }
-  h1 .name { display: block; font-size: clamp(48px, 7.4vw, 84px); line-height: 1; }
+  h1 .name { display: block; font-size: clamp(40px, 7vw, 80px); line-height: 1; }
   h1 .tagline { display: block; margin-top: 16px; font-size: clamp(24px, 3.1vw, 34px); line-height: 1.2; font-weight: 700; letter-spacing: -.02em; color: var(--fg); }
   .lead { margin: 20px 0 0; max-width: 540px; font-size: 18px; color: var(--muted); }
   .lead strong { color: var(--fg); font-weight: 600; }
@@ -311,14 +311,14 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="SpeakerAwake home"><img src="icon-256.png" alt="" width="30" height="30">SpeakerAwake</a>
+    <a class="brand" href="#top" aria-label="KeepSpeakerOn home"><img src="icon-256.png" alt="" width="30" height="30">KeepSpeakerOn</a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
       <a href="#devices">Devices</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-ghost btn-sm" href="https://github.com/mdsajedul/SpeakerAwake"><svg class="i"><use href="#i-github"/></svg>GitHub</a>
+    <a class="btn btn-ghost btn-sm" href="https://github.com/mdsajedul/KeepSpeakerOn"><svg class="i"><use href="#i-github"/></svg>GitHub</a>
   </div>
 </header>
 
@@ -327,13 +327,13 @@
     <div class="wrap hero-grid">
       <div>
         <span class="pill"><span class="dot"></span>Free &amp; open source · Windows 10 &amp; 11</span>
-        <h1><span class="name grad-text">SpeakerAwake</span><span class="tagline">Your speaker, always ready.</span></h1>
+        <h1><span class="name grad-text">KeepSpeakerOn</span><span class="tagline">Your speaker, always ready.</span></h1>
         <p class="lead"><strong>Stop your Bluetooth speaker turning off automatically.</strong>
-          SpeakerAwake keeps Bluetooth, USB and HDMI speakers out of auto-standby with a signal you can't hear,
+          KeepSpeakerOn keeps Bluetooth, USB and HDMI speakers out of auto-standby with a signal you can't hear,
           so the first second of sound is never cut off again.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="https://github.com/mdsajedul/SpeakerAwake/releases/latest/download/SpeakerAwake.exe"><svg class="i"><use href="#i-download"/></svg>Download for Windows <small>64 KB</small></a>
-          <a class="btn btn-ghost" href="https://github.com/mdsajedul/SpeakerAwake"><svg class="i"><use href="#i-github"/></svg>View source</a>
+          <a class="btn btn-primary" href="https://github.com/mdsajedul/KeepSpeakerOn/releases/latest/download/KeepSpeakerOn.exe"><svg class="i"><use href="#i-download"/></svg>Download for Windows <small>64 KB</small></a>
+          <a class="btn btn-ghost" href="https://github.com/mdsajedul/KeepSpeakerOn"><svg class="i"><use href="#i-github"/></svg>View source</a>
         </div>
         <ul class="checks">
           <li><svg class="i"><use href="#i-check"/></svg>No installer</li>
@@ -342,7 +342,7 @@
         </ul>
       </div>
 
-      <div class="mock" role="img" aria-label="SpeakerAwake running in the Windows system tray, playing an inaudible -70 dB signal to the speaker">
+      <div class="mock" role="img" aria-label="KeepSpeakerOn running in the Windows system tray, playing an inaudible -70 dB signal to the speaker">
         <div class="mock-inner">
           <div class="signal">
             <div class="signal-top"><span>Keep-alive signal</span><b>−70 dB</b></div>
@@ -400,13 +400,13 @@
       <div class="head">
         <span class="eyebrow">The fix</span>
         <h2>Set it once. <span class="grad-text">Forget it forever.</span></h2>
-        <p>SpeakerAwake sits in the system tray and plays a signal far too quiet to hear, so your speaker never
+        <p>KeepSpeakerOn sits in the system tray and plays a signal far too quiet to hear, so your speaker never
           sees silence and never goes to sleep.</p>
       </div>
       <div class="cards">
         <div class="card"><div class="ic"><svg class="i"><use href="#i-speaker"/></svg></div><h3>Inaudible</h3><p>Very quiet white noise (−60 to −90 dB) or a 10–15 Hz tone below the range of human hearing.</p></div>
         <div class="card"><div class="ic"><svg class="i"><use href="#i-music"/></svg></div><h3>Plays alongside everything</h3><p>Music, YouTube, games and calls sound exactly as before. Nothing is mixed out or lowered.</p></div>
-        <div class="card"><div class="ic"><svg class="i"><use href="#i-bluetooth"/></svg></div><h3>Follows your speaker</h3><p>Switch your default output and SpeakerAwake moves to the new device within a second.</p></div>
+        <div class="card"><div class="ic"><svg class="i"><use href="#i-bluetooth"/></svg></div><h3>Follows your speaker</h3><p>Switch your default output and KeepSpeakerOn moves to the new device within a second.</p></div>
         <div class="card"><div class="ic"><svg class="i"><use href="#i-refresh"/></svg></div><h3>Reconnects by itself</h3><p>It waits through Bluetooth disconnects and resumes as soon as your speaker comes back.</p></div>
         <div class="card"><div class="ic"><svg class="i"><use href="#i-moon"/></svg></div><h3>Sleep-aware</h3><p>Pauses when your PC sleeps and resumes on wake. It never keeps your PC awake.</p></div>
         <div class="card"><div class="ic"><svg class="i"><use href="#i-feather"/></svg></div><h3>Featherweight</h3><p>About 0% CPU and 2 MB of memory. No admin rights, no internet access, no telemetry.</p></div>
@@ -421,7 +421,7 @@
         <h2>Up and running in 30 seconds</h2>
       </div>
       <ol class="steps">
-        <li><h3>Download</h3><p><a href="https://github.com/mdsajedul/SpeakerAwake/releases/latest/download/SpeakerAwake.exe">Get SpeakerAwake.exe</a> and put it in a folder you'll keep, like <code>C:\Tools</code>.</p></li>
+        <li><h3>Download</h3><p><a href="https://github.com/mdsajedul/KeepSpeakerOn/releases/latest/download/KeepSpeakerOn.exe">Get KeepSpeakerOn.exe</a> and put it in a folder you'll keep, like <code>C:\Tools</code>.</p></li>
         <li><h3>Run it</h3><p>Double-click the exe. A green speaker icon appears next to the clock. That's it, it's working.</p></li>
         <li><h3>Start with Windows</h3><p>Right-click the icon and tick <strong>Start with Windows</strong> so it's always on after you sign in.</p></li>
       </ol>
@@ -429,7 +429,7 @@
         <svg class="i"><use href="#i-info"/></svg>
         <p><strong>See a blue "Windows protected your PC" screen?</strong> That's SmartScreen, which warns about new apps
           that aren't code-signed yet. Click <strong>More info</strong>, then <strong>Run anyway</strong>.
-          <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/docs/USER_GUIDE.md#first-launch-windows-protected-your-pc">How to check the file is genuine</a></p>
+          <a href="https://github.com/mdsajedul/KeepSpeakerOn/blob/main/docs/USER_GUIDE.md#first-launch-windows-protected-your-pc">How to check the file is genuine</a></p>
       </div>
     </div>
   </section>
@@ -440,8 +440,8 @@
         <div class="head">
           <span class="eyebrow">Works with</span>
           <h2>Any speaker that sleeps when it's quiet</h2>
-          <p>If Windows can play to it, SpeakerAwake can keep it awake.
-            <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/docs/SUPPORTED_DEVICES.md">Tested devices and limitations</a></p>
+          <p>If Windows can play to it, KeepSpeakerOn can keep it awake.
+            <a href="https://github.com/mdsajedul/KeepSpeakerOn/blob/main/docs/SUPPORTED_DEVICES.md">Tested devices and limitations</a></p>
         </div>
         <div>
           <ul class="chips">
@@ -468,33 +468,33 @@
       <div class="faq">
         <details open>
           <summary>How do I stop my Bluetooth speaker from turning off automatically on Windows?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-          <p>Most Bluetooth speakers switch off after 5–30 minutes without sound. Run SpeakerAwake and leave it
+          <p>Most Bluetooth speakers switch off after 5–30 minutes without sound. Run KeepSpeakerOn and leave it
             in the system tray. It keeps sending a signal too quiet to hear, so the speaker stays on as long as your PC is awake.</p>
         </details>
         <details>
           <summary>Why does my speaker cut off the first second of sound?<svg class="i"><use href="#i-chev-down"/></svg></summary>
           <p>When there's no audio, many speakers and soundbars enter power-saving standby and take a moment to
-            wake up when sound starts, so the start of notifications, videos and songs is clipped. SpeakerAwake
+            wake up when sound starts, so the start of notifications, videos and songs is clipped. KeepSpeakerOn
             keeps the speaker active, so nothing is cut off.</p>
         </details>
         <details>
-          <summary>Can I hear the signal SpeakerAwake plays?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+          <summary>Can I hear the signal KeepSpeakerOn plays?<svg class="i"><use href="#i-chev-down"/></svg></summary>
           <p>No. The default is white noise at −70 dB, far below normal listening levels. You can choose −80
             or −90 dB, or a 10–15 Hz tone, which is below the range of human hearing.</p>
         </details>
         <details>
           <summary>Why not just play a silent MP3 on loop?<svg class="i"><use href="#i-chev-down"/></svg></summary>
           <p>A silent file is digital silence, which most speakers detect as "no signal", so they go to sleep
-            anyway. SpeakerAwake sends a real but inaudible signal, follows device changes, and survives sleep and disconnects.</p>
+            anyway. KeepSpeakerOn sends a real but inaudible signal, follows device changes, and survives sleep and disconnects.</p>
         </details>
         <details>
-          <summary>Is SpeakerAwake safe? Why does Windows show a SmartScreen warning?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-          <p>SpeakerAwake is open source under the MIT license, doesn't connect to the internet and needs no
+          <summary>Is KeepSpeakerOn safe? Why does Windows show a SmartScreen warning?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+          <p>KeepSpeakerOn is open source under the MIT license, doesn't connect to the internet and needs no
             admin rights. Windows SmartScreen warns because the exe isn't code-signed yet. Click
             <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
         </details>
         <details>
-          <summary>Does SpeakerAwake work on Windows 10, Windows 11, macOS or Linux?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+          <summary>Does KeepSpeakerOn work on Windows 10, Windows 11, macOS or Linux?<svg class="i"><use href="#i-chev-down"/></svg></summary>
           <p>It works on Windows 10 (64-bit or 32-bit) and Windows 11. macOS and Linux aren't supported.</p>
         </details>
       </div>
@@ -508,8 +508,8 @@
         <h2>Give your speaker a reason <span class="grad-text">to stay awake</span></h2>
         <p>Free forever, open source, and smaller than a single photo.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="https://github.com/mdsajedul/SpeakerAwake/releases/latest/download/SpeakerAwake.exe"><svg class="i"><use href="#i-download"/></svg>Download for Windows</a>
-          <a class="btn btn-ghost" href="https://github.com/mdsajedul/SpeakerAwake"><svg class="i"><use href="#i-github"/></svg>Star on GitHub</a>
+          <a class="btn btn-primary" href="https://github.com/mdsajedul/KeepSpeakerOn/releases/latest/download/KeepSpeakerOn.exe"><svg class="i"><use href="#i-download"/></svg>Download for Windows</a>
+          <a class="btn btn-ghost" href="https://github.com/mdsajedul/KeepSpeakerOn"><svg class="i"><use href="#i-github"/></svg>Star on GitHub</a>
         </div>
       </div>
     </div>
@@ -518,13 +518,13 @@
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="icon-256.png" alt="" width="30" height="30">SpeakerAwake</a>
-    <span>© 2026 mdsajedul · <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/LICENSE">MIT license</a></span>
+    <a class="brand" href="#top"><img src="icon-256.png" alt="" width="30" height="30">KeepSpeakerOn</a>
+    <span>© 2026 mdsajedul · <a href="https://github.com/mdsajedul/KeepSpeakerOn/blob/main/LICENSE">MIT license</a></span>
     <nav aria-label="Footer">
-      <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/docs/USER_GUIDE.md">User guide</a>
-      <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/CHANGELOG.md">Changelog</a>
-      <a href="https://github.com/mdsajedul/SpeakerAwake">Source code</a>
-      <a href="https://github.com/mdsajedul/SpeakerAwake/issues">Report a problem</a>
+      <a href="https://github.com/mdsajedul/KeepSpeakerOn/blob/main/docs/USER_GUIDE.md">User guide</a>
+      <a href="https://github.com/mdsajedul/KeepSpeakerOn/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="https://github.com/mdsajedul/KeepSpeakerOn">Source code</a>
+      <a href="https://github.com/mdsajedul/KeepSpeakerOn/issues">Report a problem</a>
     </nav>
   </div>
 </footer>

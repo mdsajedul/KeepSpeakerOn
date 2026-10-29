@@ -1,11 +1,11 @@
-# Generates assets\SpeakerAwake.ico (16-256 px, PNG-compressed entries) from the same
-# speaker shape the tray icon uses (TrayApp.MakeIcon in src\SpeakerAwake.cs).
+# Generates assets\KeepSpeakerOn.ico (16-256 px, PNG-compressed entries) from the same
+# speaker shape the tray icon uses (TrayApp.MakeIcon in src\KeepSpeakerOn.cs).
 # Run: powershell -ExecutionPolicy Bypass -File tools\make-icon.ps1
 
 Add-Type -AssemblyName System.Drawing
 
 $root = Split-Path -Parent $PSScriptRoot
-$out = Join-Path $root 'assets\SpeakerAwake.ico'
+$out = Join-Path $root 'assets\KeepSpeakerOn.ico'
 New-Item -ItemType Directory -Force (Split-Path $out) | Out-Null
 
 $color = [System.Drawing.Color]::FromArgb(46, 184, 92)
@@ -68,7 +68,7 @@ $images = @()
 foreach ($s in $sizes) {
     $bmp = New-IconPng $s
     $images += ,(ConvertTo-IconEntry $bmp)
-    if ($s -eq 256) { $bmp.Save((Join-Path $root 'assets\SpeakerAwake-256.png'), [System.Drawing.Imaging.ImageFormat]::Png) }
+    if ($s -eq 256) { $bmp.Save((Join-Path $root 'assets\KeepSpeakerOn-256.png'), [System.Drawing.Imaging.ImageFormat]::Png) }
     $bmp.Dispose()
 }
 
