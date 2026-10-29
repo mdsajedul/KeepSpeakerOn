@@ -1,0 +1,12 @@
+# Build output (the exe is published as a GitHub Release asset, not committed)
+bin/
+obj/
+*.exe
+*.pdb
+
+# Editors / OS
+.vs/
+.vscode/
+*.user
+Thumbs.db
+desktop.ini
