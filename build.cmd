@@ -10,6 +10,6 @@ if not exist "%CSC%" (
 cd /d "%~dp0"
 if not exist bin mkdir bin
 "%CSC%" /nologo /target:winexe /platform:anycpu32bitpreferred /optimize+ /warnaserror+ ^
-  /out:bin\SpeakerAwake.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll src\SpeakerAwake.cs
+  /win32icon:assets\SpeakerAwake.ico /out:bin\SpeakerAwake.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll src\SpeakerAwake.cs
 if errorlevel 1 exit /b 1
 echo Built bin\SpeakerAwake.exe

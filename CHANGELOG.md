@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] - 2026-10-29
+
+- The exe now has an app icon (the green speaker from the tray), visible in Explorer, the taskbar and Task Manager
+- The docs explain the "Windows protected your PC" (SmartScreen) warning and how to check the download is genuine
+
 ## [1.0.0] - 2026-10-29
 
 First release.

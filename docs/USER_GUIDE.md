@@ -7,9 +7,35 @@ SpeakerAwake is a single portable exe with no installer.
 1. Download `SpeakerAwake.exe` from the [latest release](../../../releases/latest).
 2. Move it to a permanent folder, for example `C:\Tools\SpeakerAwake\`.
    Do this *before* you turn on **Start with Windows**, because that setting remembers where the exe is.
-3. Double-click it. If SmartScreen warns you, choose **More info → Run anyway**.
+3. Double-click it. On first launch you'll probably see the warning described below.
 
 Only one copy runs at a time. Starting it again does nothing.
+
+### First launch: "Windows protected your PC"
+
+The first time you run it, Windows may show a blue screen that says
+**"Microsoft Defender SmartScreen prevented an unrecognized app from starting."**
+
+**Why:** SmartScreen warns about any downloaded app that is new and not yet *code-signed*.
+Signing certificates cost money, and SmartScreen only learns to trust a new app once enough
+people have run it. The warning doesn't mean anything harmful was found.
+
+**To run it:**
+1. Click **More info** (the small link under the message).
+2. Click **Run anyway**.
+
+Windows remembers your choice, so you won't see the warning for that file again.
+
+**Check that the file is genuine (optional):** every [release](../../../releases) lists the
+SHA-256 fingerprint of the exe. In PowerShell, run:
+
+```
+Get-FileHash $HOME\Downloads\SpeakerAwake.exe -Algorithm SHA256
+```
+
+Make sure the `Hash` value matches the one on the release page. You can also right-click
+the exe and choose **Properties → General**. If there's an **Unblock** checkbox, tick it
+and click OK, which stops the warning before you launch it.
 
 ## 2. The tray icon
 
@@ -63,6 +89,7 @@ step quieter.
 
 | Problem | Fix |
 |---|---|
+| Blue "Windows protected your PC" screen | Click **More info → Run anyway**. See [First launch](#first-launch-windows-protected-your-pc). |
 | The icon stays orange | No output device is available. Connect or turn on your speaker, or check **Settings → System → Sound**. |
 | The tooltip shows the wrong device | Set your speaker as the default output device. SpeakerAwake switches within a second. |
 | The speaker still sleeps | Use **Signal → White noise, −60 dB**. Check that the volume isn't muted. |

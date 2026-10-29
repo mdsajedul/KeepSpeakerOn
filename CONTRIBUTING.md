@@ -19,6 +19,8 @@ The output is `bin\SpeakerAwake.exe`. The build uses `/warnaserror+`, so it must
 
 ```
 src/SpeakerAwake.cs     All source code (single file)
+assets/                 App icon (.ico) and a 256 px PNG preview
+tools/make-icon.ps1     Regenerates the app icon
 build.cmd               Build script
 docs/                   User guide, requirements, supported devices
 ```
@@ -115,6 +117,28 @@ Before opening a PR that touches the engine or the tray UI:
 2. Run `build.cmd`.
 3. Tag the release (`git tag v1.x.y && git push --tags`), then create a GitHub Release for the
    tag and attach `bin\SpeakerAwake.exe`.
+
+### Icon
+
+The app icon (`assets/SpeakerAwake.ico`) is generated from the same shape as the tray icon.
+If you change `TrayApp.MakeIcon`, update `tools/make-icon.ps1` to match, then regenerate it:
+
+```
+powershell -ExecutionPolicy Bypass -File tools\make-icon.ps1
+```
+
+### SmartScreen and code signing
+
+Release builds are currently **not code-signed**, so Windows SmartScreen shows "Windows
+protected your PC" on first launch. Ways to reduce or remove the warning:
+
+| Option | Cost | Effect |
+|---|---|---|
+| Submit each release exe to [Microsoft's file submission portal](https://www.microsoft.com/en-us/wdsi/filesubmission) as a *Software developer*, asking for it to be marked as clean | Free | Often clears the warning for that exact file within a few days |
+| Apply for free OSS signing through the [SignPath Foundation](https://signpath.org) | Free for open-source projects | Signed builds from GitHub Actions; SmartScreen reputation still builds over time |
+| [Azure Artifact Signing](https://azure.microsoft.com/products/artifact-signing) (formerly Trusted Signing) | About US$10/month | Signed builds; available to individuals only in some countries |
+
+Never self-sign: a self-signed certificate doesn't help with SmartScreen.
 
 ## Reporting bugs
 

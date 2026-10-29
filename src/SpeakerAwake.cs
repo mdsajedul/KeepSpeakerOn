@@ -19,8 +19,8 @@ using Microsoft.Win32;
 [assembly: System.Reflection.AssemblyProduct("SpeakerAwake")]
 [assembly: System.Reflection.AssemblyDescription("Keeps external speakers out of auto-standby")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (c) 2026 mdsajedul, MIT License")]
-[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersion("1.0.1.0")]
+[assembly: System.Reflection.AssemblyFileVersion("1.0.1.0")]
 
 namespace SpeakerAwake
 {

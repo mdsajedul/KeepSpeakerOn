@@ -1,3 +1,5 @@
+<img src="assets/SpeakerAwake-256.png" alt="SpeakerAwake icon" width="96" align="right">
+
 # SpeakerAwake
 
 **Stop your speaker from falling asleep.**
@@ -11,15 +13,18 @@ hear to your speaker, so it always thinks audio is playing.
 - 🎵 **Doesn't get in the way.** Music, videos, games and calls play normally alongside it.
 - 🔌 **Follows your speaker.** It switches automatically to whatever device is your default output.
 - 😴 **Sleep-aware.** It pauses when the PC sleeps and resumes when it wakes.
-- 🪶 **Featherweight.** About 0% CPU, about 2 MB working set, and a 22 KB exe with no installer and no dependencies.
+- 🪶 **Featherweight.** About 0% CPU, about 2 MB working set, and a 64 KB exe with no installer and no dependencies.
 
 ## Download
 
 Get **`SpeakerAwake.exe`** from the [latest release](../../releases/latest), put
 it anywhere (for example `C:\Tools\SpeakerAwake\`), and double-click it.
 
-> Windows SmartScreen may warn you because the exe is not code-signed. Click
-> **More info → Run anyway**, or [build it yourself](CONTRIBUTING.md#building) from source.
+> **Seeing a blue "Windows protected your PC" screen?** That's Microsoft Defender
+> SmartScreen. It appears for new apps that aren't code-signed yet, not because anything
+> was found in the file. Click **More info**, then **Run anyway**. You only need to do this once.
+> See [User Guide → First launch](docs/USER_GUIDE.md#first-launch-windows-protected-your-pc)
+> to check the file is genuine, or [build it yourself](CONTRIBUTING.md#building) from source.
 
 ## Quick start
 
