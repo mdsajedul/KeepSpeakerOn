@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpeakerAwake: Stop Bluetooth Speakers Turning Off (Windows)</title>
+<meta name="description" content="Free Windows app that stops Bluetooth, USB and HDMI speakers turning off or going into standby, using an inaudible keep-alive signal. Open source.">
+<link rel="canonical" href="https://mdsajedul.github.io/SpeakerAwake/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="icon-256.png">
+<meta name="theme-color" content="#111827">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeakerAwake">
+<meta property="og:title" content="SpeakerAwake: stop your speaker turning off automatically">
+<meta property="og:description" content="Free, open-source Windows tray app that keeps Bluetooth and powered speakers out of auto-standby with an inaudible signal.">
+<meta property="og:url" content="https://mdsajedul.github.io/SpeakerAwake/">
+<meta property="og:image" content="https://mdsajedul.github.io/SpeakerAwake/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="SpeakerAwake: stop your Bluetooth speaker turning off automatically">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "SpeakerAwake",
+      "description": "Free Windows tray app that prevents Bluetooth, USB, HDMI and powered speakers from going into auto-standby by playing an inaudible keep-alive signal.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows 10, Windows 11",
+      "softwareVersion": "1.0.1",
+      "fileSize": "64KB",
+      "downloadUrl": "https://github.com/mdsajedul/SpeakerAwake/releases/latest",
+      "url": "https://mdsajedul.github.io/SpeakerAwake/",
+      "image": "https://mdsajedul.github.io/SpeakerAwake/icon-256.png",
+      "screenshot": "https://mdsajedul.github.io/SpeakerAwake/social-preview.png",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Person", "name": "mdsajedul", "url": "https://github.com/mdsajedul" },
+      "codeRepository": "https://github.com/mdsajedul/SpeakerAwake",
+      "sameAs": ["https://github.com/mdsajedul/SpeakerAwake"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I stop my Bluetooth speaker from turning off automatically on Windows?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most Bluetooth speakers switch off after 5 to 30 minutes without sound. Run SpeakerAwake and leave it in the system tray. It keeps sending a signal too quiet to hear, so the speaker stays on as long as your PC is awake." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my speaker cut off the first second of sound?",
+          "acceptedAnswer": { "@type": "Answer", "text": "When there is no audio, many speakers and soundbars enter power-saving standby and take a moment to wake up when sound starts, so the start of notifications, videos and songs is clipped. SpeakerAwake keeps the speaker active so nothing is cut off." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I hear the signal SpeakerAwake plays?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The default is white noise at -70 dB, far below normal listening levels. You can choose -80 or -90 dB, or a 10 to 15 Hz tone, which is below the range of human hearing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not just play a silent MP3 on loop?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A silent file is digital silence, which most speakers detect as no signal, so they go to sleep anyway. SpeakerAwake sends a real but inaudible signal, follows device changes, and survives sleep and disconnects." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SpeakerAwake safe? Why does Windows show a SmartScreen warning?",
+          "acceptedAnswer": { "@type": "Answer", "text": "SpeakerAwake is open source under the MIT license, does not connect to the internet and needs no admin rights. Windows SmartScreen warns because the exe is not code-signed yet. Click More info, then Run anyway." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does SpeakerAwake work on Windows 10, Windows 11, macOS or Linux?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It works on Windows 10 (64-bit or 32-bit) and Windows 11. macOS and Linux are not supported." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #ffffff; --fg: #111827; --muted: #4b5563; --card: #f3f4f6;
+    --line: #e5e7eb; --accent: #1f9d4f; --accent-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111827; --fg: #f9fafb; --muted: #9ca3af; --card: #1f2937;
+      --line: #374151; --accent: #2eb85c; --accent-fg: #0b1410;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111827; --fg: #f9fafb; --muted: #9ca3af; --card: #1f2937;
+    --line: #374151; --accent: #2eb85c; --accent-fg: #0b1410;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  }
+  main, header, footer { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 56px; padding-bottom: 32px; display: flex; gap: 28px; align-items: center; }
+  header img { width: 112px; height: 112px; flex: none; }
+  h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 0 0 12px; }
+  .lead { font-size: 19px; color: var(--muted); margin: 0; }
+  h2 { font-size: 26px; margin: 48px 0 12px; }
+  h3 { font-size: 18px; margin: 24px 0 4px; }
+  p, li { color: var(--fg); }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 8px 0 0; }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 8px; font-weight: 600;
+    background: var(--accent); color: var(--accent-fg); text-decoration: none;
+  }
+  .btn.secondary { background: var(--card); color: var(--fg); border: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; padding: 0; list-style: none; }
+  .grid li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .grid strong { display: block; }
+  .note { background: var(--card); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 6px; }
+  ol li { margin-bottom: 6px; }
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding-top: 20px; padding-bottom: 40px; color: var(--muted); font-size: 15px; }
+  @media (max-width: 560px) { header { flex-direction: column; align-items: flex-start; padding-top: 32px; } header img { width: 80px; height: 80px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="icon-256.png" alt="SpeakerAwake icon: a green speaker" width="112" height="112">
+  <div>
+    <h1>Stop your Bluetooth speaker turning off automatically</h1>
+    <p class="lead">SpeakerAwake is a free, open-source Windows app that keeps Bluetooth, USB, HDMI
+      and powered speakers out of auto-standby with a signal you can't hear.</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/mdsajedul/SpeakerAwake/releases/latest">Download for Windows</a>
+      <a class="btn secondary" href="https://github.com/mdsajedul/SpeakerAwake">View on GitHub</a>
+      <span class="muted">64 KB · No installer · Windows 10 &amp; 11</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h2>The problem</h2>
+  <p>Many speakers <strong>switch themselves off after a few minutes of silence</strong>. Then the
+    <strong>first second of every notification, video or song gets cut off</strong> while the speaker
+    wakes up, or you have to walk over and press the power button again. It happens with Bluetooth
+    speakers, soundbars, studio monitors and powered PC speakers.</p>
+
+  <h2>How SpeakerAwake fixes it</h2>
+  <p>It runs quietly in the system tray and plays a signal far too quiet to hear, so the speaker
+    never sees silence and never goes to sleep.</p>
+  <ul class="grid">
+    <li><strong>Inaudible</strong>Very quiet white noise (−60 to −90 dB) or a 10–15 Hz sub-audible tone.</li>
+    <li><strong>Plays alongside everything</strong>Music, YouTube, games and calls sound exactly as before.</li>
+    <li><strong>Follows your speaker</strong>Connect your speaker and SpeakerAwake moves to it automatically.</li>
+    <li><strong>Reconnects by itself</strong>It waits through disconnects and resumes when the speaker returns.</li>
+    <li><strong>Sleep-aware</strong>Pauses when the PC sleeps and resumes on wake. It never keeps your PC awake.</li>
+    <li><strong>Featherweight</strong>About 0% CPU, about 2 MB of RAM, no admin rights, no telemetry.</li>
+  </ul>
+
+  <h2>Works with</h2>
+  <p>Any speaker that turns off after a period of silence, on any output Windows can play to:
+    Bluetooth speakers (Awei, JBL, Anker Soundcore, Sony, Tribit, Xiaomi, Bose, Marshall and others),
+    Bluetooth headphones, soundbars and AV receivers over HDMI or optical, powered speakers and studio
+    monitors with auto-standby, and USB DACs.
+    <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/docs/SUPPORTED_DEVICES.md">See tested devices and limitations</a>.</p>
+
+  <h2>How to use it</h2>
+  <ol>
+    <li><a href="https://github.com/mdsajedul/SpeakerAwake/releases/latest">Download SpeakerAwake.exe</a> and put it in a permanent folder.</li>
+    <li>Double-click it. A green speaker icon appears in the system tray.</li>
+    <li>Right-click the icon and tick <strong>Start with Windows</strong>.</li>
+  </ol>
+  <p class="note"><strong>Blue "Windows protected your PC" screen?</strong> That's SmartScreen, which
+    warns about new apps that aren't code-signed yet. Click <strong>More info</strong>, then
+    <strong>Run anyway</strong>.
+    <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/docs/USER_GUIDE.md#first-launch-windows-protected-your-pc">How to check the file is genuine</a>.</p>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I stop my Bluetooth speaker from turning off automatically on Windows?</h3>
+  <p>Most Bluetooth speakers switch off after 5–30 minutes without sound. Run SpeakerAwake and leave it
+    in the system tray. It keeps sending a signal too quiet to hear, so the speaker stays on as long as your PC is awake.</p>
+
+  <h3>Why does my speaker cut off the first second of sound?</h3>
+  <p>When there's no audio, many speakers and soundbars enter power-saving standby and take a moment to
+    wake up when sound starts, so the start of notifications, videos and songs is clipped. SpeakerAwake
+    keeps the speaker active, so nothing is cut off.</p>
+
+  <h3>Can I hear the signal SpeakerAwake plays?</h3>
+  <p>No. The default is white noise at −70 dB, far below normal listening levels. You can choose −80
+    or −90 dB, or a 10–15 Hz tone, which is below the range of human hearing.</p>
+
+  <h3>Why not just play a silent MP3 on loop?</h3>
+  <p>A silent file is digital silence, which most speakers detect as "no signal", so they go to sleep
+    anyway. SpeakerAwake sends a real but inaudible signal, follows device changes, and survives sleep and disconnects.</p>
+
+  <h3>Is SpeakerAwake safe? Why does Windows show a SmartScreen warning?</h3>
+  <p>SpeakerAwake is open source under the MIT license, doesn't connect to the internet and needs no
+    admin rights. Windows SmartScreen warns because the exe isn't code-signed yet. Click
+    <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+
+  <h3>Does SpeakerAwake work on Windows 10, Windows 11, macOS or Linux?</h3>
+  <p>It works on Windows 10 (64-bit or 32-bit) and Windows 11. macOS and Linux aren't supported.</p>
+</main>
+
+<footer>
+  <p>SpeakerAwake is free and open source under the
+    <a href="https://github.com/mdsajedul/SpeakerAwake/blob/main/LICENSE">MIT license</a> · © 2026 mdsajedul ·
+    <a href="https://github.com/mdsajedul/SpeakerAwake">Source code</a> ·
+    <a href="https://github.com/mdsajedul/SpeakerAwake/issues">Report a problem</a></p>
+</footer>
+
+</body>
+</html>

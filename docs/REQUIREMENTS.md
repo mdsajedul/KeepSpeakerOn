@@ -15,7 +15,7 @@
 Windows 7 and 8.1 may work but are not tested or supported.
 
 To build from source you only need the C# compiler that comes with .NET Framework.
-See [CONTRIBUTING.md](../CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/mdsajedul/SpeakerAwake/blob/main/CONTRIBUTING.md).
 
 ## Functional requirements
 

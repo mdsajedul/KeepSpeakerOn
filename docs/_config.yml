@@ -1,0 +1,10 @@
+# GitHub Pages (served from /docs). index.html is a static page; the .md guides are rendered by Jekyll.
+title: SpeakerAwake
+description: Free Windows app that stops Bluetooth and powered speakers turning off automatically.
+url: https://mdsajedul.github.io
+baseurl: /SpeakerAwake
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-seo-tag
+include:
+  - llms.txt

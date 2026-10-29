@@ -4,7 +4,7 @@
 
 SpeakerAwake is a single portable exe with no installer.
 
-1. Download `SpeakerAwake.exe` from the [latest release](../../../releases/latest).
+1. Download `SpeakerAwake.exe` from the [latest release](https://github.com/mdsajedul/SpeakerAwake/releases/latest).
 2. Move it to a permanent folder, for example `C:\Tools\SpeakerAwake\`.
    Do this *before* you turn on **Start with Windows**, because that setting remembers where the exe is.
 3. Double-click it. On first launch you'll probably see the warning described below.
@@ -26,7 +26,7 @@ people have run it. The warning doesn't mean anything harmful was found.
 
 Windows remembers your choice, so you won't see the warning for that file again.
 
-**Check that the file is genuine (optional):** every [release](../../../releases) lists the
+**Check that the file is genuine (optional):** every [release](https://github.com/mdsajedul/SpeakerAwake/releases) lists the
 SHA-256 fingerprint of the exe. In PowerShell, run:
 
 ```
