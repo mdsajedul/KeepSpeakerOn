@@ -498,6 +498,17 @@ namespace KeepSpeakerOn
                 key.SetValue("Signal", preset.Key);
         }
 
+        // True only the first time this user runs the app, so it can turn on startup by default.
+        public static bool CheckFirstRun()
+        {
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(KeyPath))
+            {
+                if (key.GetValue("Installed") != null) return false;
+                key.SetValue("Installed", 1);
+                return true;
+            }
+        }
+
         // Versions before 1.1.0 were called SpeakerAwake. Carry over the signal choice and the
         // startup entry, then remove the old ones so both apps don't start at sign-in.
         public static void MigrateFromSpeakerAwake()
@@ -541,6 +552,16 @@ namespace KeepSpeakerOn
             }
         }
 
+        // Points an existing entry at this exe when the file it names was moved or deleted.
+        public static void RepairPath()
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RunKey, true))
+            {
+                string value = key == null ? null : key.GetValue(ValueName) as string;
+                if (value != null && !System.IO.File.Exists(value.Trim('"'))) key.SetValue(ValueName, Command);
+            }
+        }
+
         // Removes the pre-1.1.0 "SpeakerAwake" startup entry; returns true if there was one.
         public static bool RemoveLegacyEntry()
         {
@@ -574,7 +595,7 @@ namespace KeepSpeakerOn
         readonly KeepAliveEngine engine;
         readonly System.Windows.Forms.Timer trimTimer;
 
-        public TrayApp()
+        public TrayApp(bool firstRun)
         {
             invoker = new Control();
             invoker.CreateControl();
@@ -616,6 +637,10 @@ namespace KeepSpeakerOn
             tray.Text = "KeepSpeakerOn";
             tray.ContextMenuStrip = menu;
             tray.Visible = true;
+            if (firstRun)
+                tray.ShowBalloonTip(10000, "KeepSpeakerOn is running",
+                    "Your speaker will stay on. KeepSpeakerOn now starts with Windows; right-click this icon to change that.",
+                    ToolTipIcon.Info);
 
             SystemEvents.PowerModeChanged += OnPowerModeChanged;
 
@@ -751,11 +776,18 @@ namespace KeepSpeakerOn
             using (Mutex mutex = new Mutex(true, @"Local\KeepSpeakerOn.SingleInstance", out firstInstance))
             {
                 if (!firstInstance) return 1;
-                try { Settings.MigrateFromSpeakerAwake(); }
-                catch (Exception) { } // best effort; never block startup over old settings
+                bool firstRun = false;
+                try
+                {
+                    Settings.MigrateFromSpeakerAwake();
+                    firstRun = Settings.CheckFirstRun();
+                    if (firstRun) Startup.SetEnabled(true);
+                    else Startup.RepairPath();
+                }
+                catch (Exception) { } // best effort; never block startup over registry problems
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new TrayApp());
+                Application.Run(new TrayApp(firstRun));
             }
             return 0;
         }

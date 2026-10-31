@@ -6,8 +6,11 @@ KeepSpeakerOn is a single portable exe with no installer.
 
 1. Download `KeepSpeakerOn.exe` from the [latest release](https://github.com/mdsajedul/KeepSpeakerOn/releases/latest).
 2. Move it to a permanent folder, for example `C:\Tools\KeepSpeakerOn\`.
-   Do this *before* you turn on **Start with Windows**, because that setting remembers where the exe is.
 3. Double-click it. On first launch you'll probably see the warning described below.
+
+The first time it runs, KeepSpeakerOn turns on **Start with Windows** and shows a notification
+saying so, so it's back in the tray after every restart. If you move the exe later, just run it
+once from its new folder and the startup entry follows it.
 
 Only one copy runs at a time. Starting it again does nothing.
 
@@ -94,7 +97,7 @@ step quieter.
 | The tooltip shows the wrong device | Set your speaker as the default output device. KeepSpeakerOn switches within a second. |
 | The speaker still sleeps | Use **Signal → White noise, −60 dB**. Check that the volume isn't muted. |
 | I can hear a faint hiss | Choose a quieter preset, −80 dB or −90 dB. |
-| It doesn't start at sign-in | Untick and re-tick **Start with Windows** (needed if you moved the exe). Also check **Task Manager → Startup apps**. |
+| It doesn't start at sign-in | Run the exe once from where it lives now, and check **Start with Windows** is ticked. Also make sure it's enabled in **Task Manager → Startup apps**. |
 | *"Device in exclusive use"* | Another app (for example a DAW or an ASIO driver) has taken over the device. Close it, or turn off exclusive mode in the device's Sound properties. |
 
 ## 7. Uninstall

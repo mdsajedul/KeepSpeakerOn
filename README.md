@@ -46,7 +46,7 @@ Tested a speaker? [Tell us whether it worked](https://github.com/mdsajedul/KeepS
 1. **Download** `KeepSpeakerOn.exe` from the [latest release](https://github.com/mdsajedul/KeepSpeakerOn/releases/latest) and put it in a permanent folder.
 2. **Double-click it.** A speaker icon appears in the system tray. If you don't see it, click the **^** arrow.
 3. Check that the icon is **green**. Hover over it to see which device it's playing on.
-4. Right-click the icon and tick **Start with Windows**.
+4. That's it. KeepSpeakerOn now **starts with Windows automatically**. To turn that off, right-click the icon and untick **Start with Windows**.
 
 > **Seeing a blue "Windows protected your PC" screen?** That's Microsoft Defender
 > SmartScreen. It appears for new apps that aren't code-signed yet, not because anything

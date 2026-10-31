@@ -6,6 +6,8 @@
   The exe is now `KeepSpeakerOn.exe` and the website is https://mdsajedul.github.io/KeepSpeakerOn/
 - Upgrading: run the new exe and exit the old one. Your signal choice and "Start with Windows" carry over automatically,
   and the old startup entry is removed. You can then delete `SpeakerAwake.exe`.
+- **Starts with Windows automatically** from the first run, with a one-time notification. Untick it in the tray menu to turn it off.
+- If you move the exe, running it once from the new folder updates the startup entry.
 
 ## [1.0.1] - 2026-10-29
 
