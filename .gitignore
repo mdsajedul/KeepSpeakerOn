@@ -10,3 +10,6 @@ obj/
 *.user
 Thumbs.db
 desktop.ini
+
+# Screenshots saved in the project root
+/*.png
