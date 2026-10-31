@@ -67,6 +67,11 @@
         },
         {
           "@type": "Question",
+          "name": "Does KeepSpeakerOn drain my speaker's battery?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The signal itself uses a negligible amount of power, because it plays far below hearing level and the amplifier does almost no work. What uses battery is the speaker staying switched on: its Bluetooth radio, processor and amplifier remain powered and drain the battery at the speaker's own idle rate, usually slower than playing music. Plugged-in speakers are unaffected. For battery speakers, keep them on charge at your desk or choose Pause in the tray menu when you won't be listening for a while." }
+        },
+        {
+          "@type": "Question",
           "name": "Why not just play a silent MP3 on loop?",
           "acceptedAnswer": { "@type": "Answer", "text": "A silent file is digital silence, which most speakers detect as no signal, so they go to sleep anyway. KeepSpeakerOn sends a real but inaudible signal, follows device changes, and survives sleep and disconnects." }
         },
@@ -481,6 +486,19 @@
           <summary>Can I hear the signal KeepSpeakerOn plays?<svg class="i"><use href="#i-chev-down"/></svg></summary>
           <p>No. The default is white noise at −70 dB, far below normal listening levels. You can choose −80
             or −90 dB, or a 10–15 Hz tone, which is below the range of human hearing.</p>
+        </details>
+        <details>
+          <summary>Does KeepSpeakerOn drain my speaker's battery?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+          <p><strong>The signal itself uses a negligible amount of power.</strong> It plays far below hearing
+            level, so the speaker's amplifier does almost no work to reproduce it.</p>
+          <p><strong>What does use battery is the speaker staying switched on.</strong> Auto-off exists to save
+            power, and preventing it is exactly what KeepSpeakerOn does. While it runs, the speaker's Bluetooth
+            radio, processor and amplifier remain powered, and the battery drains at the speaker's own idle rate.
+            That's usually slower than playing music, but faster than being switched off.</p>
+          <p>Plugged-in speakers, such as soundbars, studio monitors and powered PC speakers, are unaffected.
+            For battery-powered speakers, keep them on charge at your desk, or right-click the tray icon and
+            choose <strong>Pause</strong> when you won't be listening for a while. When your PC sleeps or shuts
+            down, KeepSpeakerOn stops as well.</p>
         </details>
         <details>
           <summary>Why not just play a silent MP3 on loop?<svg class="i"><use href="#i-chev-down"/></svg></summary>

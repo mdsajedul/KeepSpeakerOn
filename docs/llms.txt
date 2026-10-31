@@ -10,6 +10,7 @@ Key facts:
 - Resource use: about 0% CPU, about 2 MB working set. No network access, no telemetry.
 - It follows the Windows default output device, retries when the device disconnects, and pauses during system sleep.
 - It starts with Windows automatically from the first run (can be turned off). Settings: tray menu (Pause, Signal preset, Start with Windows). Default signal: white noise at -70 dBFS. If a speaker still sleeps, use -60 dBFS.
+- Battery: the inaudible signal itself uses negligible power. A battery speaker that is kept on drains at its own idle rate (usually slower than playing music); plugged-in speakers are unaffected. Users can Pause from the tray.
 - It does not keep the PC awake, and it can't help speakers with a fixed power-off timer that ignores input.
 - The exe is not code-signed yet, so Windows SmartScreen shows "Windows protected your PC". Users click More info, then Run anyway.
 

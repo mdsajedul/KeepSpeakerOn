@@ -76,10 +76,28 @@ A silent file is *digital silence*: every sample is zero. Most speakers detect t
 and go to sleep anyway. KeepSpeakerOn sends a real, tiny signal that the speaker detects.
 It also follows device changes and survives sleep and disconnects, which a media player won't.
 
-### Does it affect sound quality or battery life?
-Sound quality: no. The signal is mixed in at a level far below what you can hear. Laptop battery: the
-impact is negligible (about 0% CPU). Your Bluetooth speaker *will* use its own battery while it's
-kept on, so on battery-powered speakers it's best used while they're plugged in.
+### Does KeepSpeakerOn drain my speaker's battery?
+**The signal itself uses a negligible amount of power.** It plays at around −70 dB, far below anything
+you can hear, so the speaker's amplifier does almost no work to reproduce it.
+
+**What does use battery is the speaker staying switched on.** Auto-off exists to save power, and
+preventing it is exactly what KeepSpeakerOn does. While it runs, the speaker's Bluetooth radio,
+processor and amplifier remain powered, and the battery drains at the speaker's own idle rate. That's
+usually slower than playing music, but faster than being switched off.
+
+| Your setup | Battery impact |
+|---|---|
+| Plugged-in speaker (soundbar, studio monitors, USB or powered PC speakers) | None |
+| Battery speaker kept on charge at your desk | None |
+| Battery speaker running on battery | Drains at the speaker's normal "on but silent" rate |
+
+**Tips for battery-powered speakers:** keep the speaker on charge while it's at your desk, or
+right-click the tray icon and choose **Pause** when you won't be listening for a while. The speaker's
+own auto-off then works as normal. When your PC sleeps or shuts down, KeepSpeakerOn stops as well.
+
+### Does it affect sound quality or my laptop's battery?
+No. The signal is far below hearing level, so music, video and calls sound exactly the same. On the PC
+it uses about 0% CPU and no network, so the effect on laptop battery is negligible.
 
 ### Is KeepSpeakerOn safe? Why does Windows warn me?
 Yes. It's open source under the MIT license, and you can read every line in
